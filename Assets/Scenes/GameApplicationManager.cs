@@ -40,7 +40,13 @@ public class GameApplicationManager : MonoBehaviour
         get { return _isOptionMenuActive; }
         set { _isOptionMenuActive = value; }
     }
+    public bool IsHowtoActive
+    {
+        get { return _isHowtoActive; }
+        set { _isHowtoActive = value; }
+    }
     protected bool _isOptionMenuActive =false;
+    protected bool _isHowtoActive = false;
 
     public int DifficultyLevel{get;set;}
     public bool MusicEnabled{get;set;}

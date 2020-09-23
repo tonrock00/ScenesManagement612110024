@@ -8,12 +8,16 @@ public class MainMenuControlScript : MonoBehaviour
     [SerializeField] Button _startButton;
     [SerializeField] Button _optionsButton;
     [SerializeField] Button _exitButton;
+    [SerializeField] Button _howtoButton;
+    [SerializeField] Button _QButton;
     // Start is called before the first frame update
     void Start()
     {
         _startButton.onClick.AddListener(delegate { StartButtonClick(_startButton); });
         _optionsButton.onClick.AddListener(delegate { OptionsButtonClick(_optionsButton); });
         _exitButton.onClick.AddListener(delegate { ExitButtonClick(_exitButton); });
+        _howtoButton.onClick.AddListener(delegate { HowtoButtonClick(_howtoButton); });
+        _QButton.onClick.AddListener(delegate { QButtonClick(_QButton); });
     }
 
     // Update is called once per frame
@@ -36,5 +40,17 @@ public class MainMenuControlScript : MonoBehaviour
     public void ExitButtonClick(Button button)
     {
         Application.Quit();
+    }
+    public void HowtoButtonClick(Button button)
+    {
+        if (!GameApplicationManager.Instance.IsHowtoActive)
+        {
+            SceneManager.LoadScene("SceneHowto", LoadSceneMode.Additive);
+            GameApplicationManager.Instance.IsHowtoActive = true;
+        }
+    }
+    public void QButtonClick(Button button)
+    {
+        SceneManager.LoadScene("SceneQ");
     }
 }
