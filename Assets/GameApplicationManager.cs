@@ -8,7 +8,7 @@ public class GameApplicationManager : MonoBehaviour
     {
         get
         {
-            if (_instance == null)
+            if(_instance == null)
             {
                 _instance = GameObject.FindObjectOfType<GameApplicationManager>();
                 GameObject container = new GameObject("GameApplicationManager");

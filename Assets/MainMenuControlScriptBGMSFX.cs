@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class MainMenuControlScript : MonoBehaviour
+using UnityEngine.EventSystems;
+public class MainMenuControlScriptBGMSFX : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] Button _startButton;
     [SerializeField] Button _optionsButton;
@@ -11,7 +12,26 @@ public class MainMenuControlScript : MonoBehaviour
     [SerializeField] Button _howtoButton;
     [SerializeField] Button _QButton;
     // Start is called before the first frame update
+
+    AudioSource audiosourceButtonUI;
+    [SerializeField] AudioClip audioclipHoldOver;
     void Start()
+    {
+        this.audiosourceButtonUI = this.gameObject.AddComponent<AudioSource>();
+        this.audiosourceButtonUI.outputAudioMixerGroup = SingletonSoundManager.Instance.Mixer.FindMatchingGroups("UI")[0];
+        SetupButtonsDelegate();
+
+        if (!SingletonSoundManager.Instance.BGMSource.isPlaying)
+            SingletonSoundManager.Instance.BGMSource.Play();
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (audiosourceButtonUI.isPlaying)
+            audiosourceButtonUI.Stop();
+
+        audiosourceButtonUI.PlayOneShot(audioclipHoldOver);
+    }
+    void SetupButtonsDelegate()
     {
         _startButton.onClick.AddListener(delegate { StartButtonClick(_startButton); });
         _optionsButton.onClick.AddListener(delegate { OptionsButtonClick(_optionsButton); });
@@ -20,11 +40,6 @@ public class MainMenuControlScript : MonoBehaviour
         _QButton.onClick.AddListener(delegate { QButtonClick(_QButton); });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void StartButtonClick(Button button)
     {
         SceneManager.LoadScene("SceneGameplay");
