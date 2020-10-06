@@ -21,6 +21,6 @@ public class HowtoControllerScript : MonoBehaviour
     public void BackButtonClick(Button button)
     {
         SceneManager.UnloadSceneAsync("SceneHowto");
-        GameApplicationManager.Instance.IsHowtoActive = false;
+        SingletonGameApplicationManager.Instance.IsHowtoActive = false;
     }
 }

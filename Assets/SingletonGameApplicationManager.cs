@@ -13,6 +13,13 @@ public class SingletonGameApplicationManager : Singleton<SingletonGameApplicatio
     }
     protected bool _isOptionMenuActive = false;
 
+    public bool IsHowtoActive
+    {
+        get { return _isHowtoActive; }
+        set { _isHowtoActive = value; }
+    }
+    protected bool _isHowtoActive = false;
+
     public int DifficultyLevel{get;set;}
     public bool MusicEnabled { get; set; }
     public bool SFXEnabled { get; set; }

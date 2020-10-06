@@ -46,10 +46,10 @@ public class MainMenuControlScriptBGMSFX : MonoBehaviour, IPointerEnterHandler
     }
     public void OptionsButtonClick(Button button)
     {
-        if (!GameApplicationManager.Instance.IsOptionMenuActive)
+        if (!SingletonGameApplicationManager.Instance.IsOptionMenuActive)
         {
             SceneManager.LoadScene("SceneOptions", LoadSceneMode.Additive);
-            GameApplicationManager.Instance.IsOptionMenuActive = true;
+            SingletonGameApplicationManager.Instance.IsOptionMenuActive = true;
         }
     }
     public void ExitButtonClick(Button button)
@@ -58,10 +58,10 @@ public class MainMenuControlScriptBGMSFX : MonoBehaviour, IPointerEnterHandler
     }
     public void HowtoButtonClick(Button button)
     {
-        if (!GameApplicationManager.Instance.IsHowtoActive)
+        if (!SingletonGameApplicationManager.Instance.IsHowtoActive)
         {
             SceneManager.LoadScene("SceneHowto", LoadSceneMode.Additive);
-            GameApplicationManager.Instance.IsHowtoActive = true;
+            SingletonGameApplicationManager.Instance.IsHowtoActive = true;
         }
     }
     public void QButtonClick(Button button)

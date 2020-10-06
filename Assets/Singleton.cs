@@ -48,4 +48,15 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         //m_ShuttingDown = true;
     }
+    void Awake()
+    {
+        var t = Singleton<T>.Instance;
+        if (Instance != null)
+        {
+            if (this != Instance)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
 }
