@@ -21,6 +21,6 @@ public class SingletonGameApplicationManager : Singleton<SingletonGameApplicatio
     protected bool _isHowtoActive = false;
 
     public int DifficultyLevel{get;set;}
-    public bool MusicEnabled { get; set; }
-    public bool SFXEnabled { get; set; }
+    public bool MusicEnabled { get; set; } = true;
+    public bool SFXEnabled { get; set; } = true;
 }

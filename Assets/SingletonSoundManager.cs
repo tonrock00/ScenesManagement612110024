@@ -10,12 +10,11 @@ public class SingletonSoundManager : Singleton<SingletonSoundManager>
     [SerializeField]
     protected AudioMixer mixer;
     public AudioMixer Mixer { get { return mixer; } set { mixer = value; } }
-
     public AudioSource BGMSource { get; set; }
 
     #region Music Volume
 
-    public float MusicVolumeDefault{get;set;}
+    public float MusicVolumeDefault { get; set; }
 
     protected float musicVolume;
     public float MusicVolume
@@ -27,7 +26,8 @@ public class SingletonSoundManager : Singleton<SingletonSoundManager>
         set
         {
             this.musicVolume = value;
-            SingletonSoundManager.Instance.Mixer.SetFloat("MusicVolume", this.musicVolume);
+            SingletonSoundManager.Instance.Mixer.SetFloat("MusicVolume", this.musicVolume
+           );
         }
     }
 
@@ -44,12 +44,15 @@ public class SingletonSoundManager : Singleton<SingletonSoundManager>
         set
         {
             this.masterSFXVolume = value;
-            SingletonSoundManager.Instance.Mixer.SetFloat("MasterSFXVolume", this.masterSFXVolume);
+            SingletonSoundManager.Instance.Mixer.SetFloat("MasterSFXVolume", this.
+           masterSFXVolume);
         }
     }
-    public float MasterSFXVolumeDefault {get;set; }
+    public float MasterSFXVolumeDefault { get; set; }
+
 
     #endregion
+
 
     private void Awake()
     {
@@ -62,4 +65,6 @@ public class SingletonSoundManager : Singleton<SingletonSoundManager>
         if (mixer.GetFloat("MasterSFXVolume", out masterSFXVolume))
             SingletonSoundManager.Instance.MasterSFXVolumeDefault = masterSFXVolume;
     }
+
+
 }

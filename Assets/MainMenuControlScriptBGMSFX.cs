@@ -66,6 +66,8 @@ public class MainMenuControlScriptBGMSFX : MonoBehaviour, IPointerEnterHandler
     }
     public void QButtonClick(Button button)
     {
+        if (SingletonSoundManager.Instance.BGMSource.isPlaying)
+            SingletonSoundManager.Instance.BGMSource.Stop();
         SceneManager.LoadScene("SceneQ");
     }
 }
